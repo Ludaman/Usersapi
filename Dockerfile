@@ -4,6 +4,9 @@ FROM node:13
 # Create app directory
 WORKDIR /usr/src/app
 
+# build the application from typescript
+RUN npm run build
+
 # Install app dependencies by copying
 # package.json and package-lock.json
 COPY www/package*.json ./
