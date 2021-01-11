@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users
+  labels:
+    app: users
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      labels:
+        app: users
+    spec:
+      containers:
+      - name: users
+        image: ludaman64/userapi
+        envFrom:
+        - secretRef:
+          name: configsecrets
+        ports:
+        - containerPort: 8080
+
